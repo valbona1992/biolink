@@ -1,1 +1,808 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeSpiritVB — Travel, Wellness & Tech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --cream: #F3EDE2;
+            --sand: #E6D5C3;
+            --terracotta: #C17A5F;
+            --terracotta-light: #D99B7A;
+            --terra-dark: #9A5D48;
+            --olive: #7A8F6A;
+            --olive-light: #A3B596;
+            --sage: #8FA88A;
+            --cocoa: #5C4033;
+            --coffee: #7B5E4A;
+            --charcoal: #2C2825;
+            --warm-black: #1E1C1A;
+            --text-main: #3D3630;
+            --text-soft: #6B5F56;
+            --text-muted: #9B8F85;
+            --white: #FDFCF9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== ANIMATED BACKGROUND BLOBS ===== */
+        .blob-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+            animation: blobFloat 20s ease-in-out infinite;
+        }
+        
+        .blob-1 {
+            width: 400px; height: 400px;
+            background: linear-gradient(135deg, var(--sand), var(--terracotta-light));
+            top: -100px; right: -100px;
+            animation-delay: 0s;
+        }
+        
+        .blob-2 {
+            width: 350px; height: 350px;
+            background: linear-gradient(135deg, var(--olive-light), var(--sage));
+            bottom: 10%; left: -80px;
+            opacity: 0.35;
+            animation-delay: -7s;
+        }
+        
+        .blob-3 {
+            width: 300px; height: 300px;
+            background: linear-gradient(135deg, var(--terracotta-light), var(--sand));
+            top: 50%; right: -50px;
+            opacity: 0.3;
+            animation-delay: -14s;
+        }
+        
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -40px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px 80px;
+            text-align: center;
+        }
+        
+        .profile-container {
+            position: relative;
+            margin-bottom: 36px;
+        }
+        
+        .profile-ring {
+            position: absolute;
+            inset: -12px;
+            border-radius: 50%;
+            border: 2px dashed var(--terracotta-light);
+            opacity: 0.4;
+            animation: spin 20s linear infinite;
+        }
+        
+        .profile-ring-2 {
+            position: absolute;
+            inset: -22px;
+            border-radius: 50%;
+            border: 1px dashed var(--olive-light);
+            opacity: 0.3;
+            animation: spinReverse 25s linear infinite;
+        }
+        
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes spinReverse { 100% { transform: rotate(-360deg); } }
+        
+        .profile-photo {
+            width: 150px; height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            box-shadow: 0 8px 40px rgba(193, 122, 95, 0.25);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .name-script {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 3.2rem;
+            color: var(--terra-dark);
+            line-height: 1.1;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+        
+        .tagline {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+        
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 36px;
+            max-width: 400px;
+        }
+        
+        .pill {
+            background: rgba(193, 122, 95, 0.08);
+            border: 1px solid rgba(193, 122, 95, 0.2);
+            border-radius: 100px;
+            padding: 8px 20px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--terra-dark);
+            transition: all 0.4s ease;
+            cursor: default;
+        }
+        
+        .pill:hover {
+            background: var(--terracotta);
+            color: var(--white);
+            transform: translateY(-2px);
+            border-color: var(--terracotta);
+        }
+        
+        .socials {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .social {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--terracotta);
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .social:hover {
+            background: var(--terracotta);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(193, 122, 95, 0.3);
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            animation: gentleBounce 2s ease-in-out infinite;
+        }
+        
+        .scroll-hint::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 30px;
+            background: var(--terracotta-light);
+            margin: 10px auto 0;
+            opacity: 0.5;
+        }
+        
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        /* ===== DIVIDER ===== */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .divider-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--terracotta-light), transparent);
+        }
+        
+        .divider-icon {
+            font-size: 0.7rem;
+            color: var(--terracotta-light);
+        }
+
+        /* ===== LINKS SECTION ===== */
+        .links-section {
+            position: relative;
+            z-index: 1;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 20px 24px 60px;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+        
+        .section-heading h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 1.8rem;
+            color: var(--terra-dark);
+            margin-bottom: 6px;
+        }
+        
+        .section-heading p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 18px 22px;
+            margin-bottom: 14px;
+            text-decoration: none;
+            border: 1px solid rgba(193, 122, 95, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .link-card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--terracotta);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .link-card:hover {
+            background: rgba(255,255,255,0.9);
+            transform: translateX(4px);
+            box-shadow: 0 8px 32px rgba(193, 122, 95, 0.12);
+        }
+        
+        .link-card:hover::before { opacity: 1; }
+        
+        .link-emoji {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            width: 40px;
+            text-align: center;
+        }
+        
+        .link-text { flex: 1; }
+        
+        .link-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 3px;
+        }
+        
+        .link-desc {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        
+        .link-arrow {
+            color: var(--terracotta-light);
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+        
+        .link-card:hover .link-arrow {
+            transform: translateX(4px);
+            color: var(--terracotta);
+        }
+
+        /* ===== IDENTITY SECTION ===== */
+        .identities {
+            position: relative;
+            z-index: 1;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 40px 24px 60px;
+        }
+        
+        .id-card {
+            border-radius: 24px;
+            padding: 36px 28px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .id-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+        }
+        
+        .id-card-travel {
+            background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(230,213,195,0.4));
+            border: 1px solid rgba(193,122,95,0.15);
+        }
+        
+        .id-card-wellness {
+            background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(163,181,150,0.25));
+            border: 1px solid rgba(122,143,106,0.15);
+        }
+        
+        .id-card-tech {
+            background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(217,155,122,0.15));
+            border: 1px solid rgba(217,155,122,0.1);
+        }
+        
+        .id-card-coffee {
+            background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(92,64,51,0.1));
+            border: 1px solid rgba(92,64,51,0.1);
+        }
+        
+        .id-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        
+        .id-emoji {
+            font-size: 1.6rem;
+        }
+        
+        .id-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--text-main);
+        }
+        
+        .id-desc {
+            font-size: 0.82rem;
+            color: var(--text-soft);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .id-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .id-btn {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.6);
+            border: 1px solid rgba(193,122,95,0.2);
+            color: var(--terra-dark);
+        }
+        
+        .id-btn:hover {
+            background: var(--terracotta);
+            color: var(--white);
+            border-color: var(--terracotta);
+        }
+
+        /* ===== COLLAB CTA ===== */
+        .collab {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 60px 24px;
+            margin-top: 20px;
+        }
+        
+        .collab-inner {
+            max-width: 480px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--terra-dark), var(--terracotta));
+            border-radius: 28px;
+            padding: 44px 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .collab-inner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .collab-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .collab-desc {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .collab-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            color: var(--terra-dark);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .collab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+        }
+        
+        .collab-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 28px;
+            position: relative;
+        }
+        
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+        
+        .stat-label {
+            font-size: 0.62rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--terra-dark);
+            margin-bottom: 4px;
+        }
+        
+        .footer-line {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (min-width: 768px) {
+            .name-script { font-size: 3.8rem; }
+            .links-section, .identities { max-width: 560px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="profile-container">
+            <div class="profile-ring"></div>
+            <div class="profile-ring-2"></div>
+            <img src="profile.jpg" alt="FreeSpiritVB" class="profile-photo">
+        </div>
+        
+        <h1 class="name-script">FreeSpiritVB</h1>
+        <p class="tagline">Wanderer • Healer • Creator</p>
+        
+        <div class="pills">
+            <span class="pill">Travel Creator</span>
+            <span class="pill">Naturopathic Doctor</span>
+            <span class="pill">Acupuncturist</span>
+            <span class="pill">Tech Enthusiast</span>
+            <span class="pill">Sabr & Sips</span>
+        </div>
+        
+        <div class="socials">
+            <a href="https://instagram.com/freespiritvb" class="social" target="_blank" rel="noopener">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://tiktok.com/@freespiritvb" class="social" target="_blank" rel="noopener">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://youtube.com/@freespiritvb" class="social" target="_blank" rel="noopener">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="mailto:hello@freespiritvb.com" class="social">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        
+        <div class="scroll-hint">Discover</div>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider">
+        <div class="divider-line"></div>
+        <i class="fas fa-leaf divider-icon"></i>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- ===== TRAVEL ESSENTIALS ===== -->
+    <section class="links-section">
+        <div class="section-heading fade-up">
+            <h2>Wanderlust Essentials</h2>
+            <p>Start Your Journey Here</p>
+        </div>
+        
+        <a href="#" class="link-card fade-up" target="_blank" rel="noopener">
+            <span class="link-emoji">📡</span>
+            <div class="link-text">
+                <div class="link-title">Airalo eSIM — Stay Connected</div>
+                <div class="link-desc">Use code VALBON8356 for travel data in 200+ countries</div>
+            </div>
+            <i class="fas fa-arrow-right link-arrow"></i>
+        </a>
+        
+        <a href="#" class="link-card fade-up" target="_blank" rel="noopener">
+            <span class="link-emoji">💳</span>
+            <div class="link-text">
+                <div class="link-title">Chase Sapphire — Travel Smart</div>
+                <div class="link-desc">The travel card I swear by (referral link)</div>
+            </div>
+            <i class="fas fa-arrow-right link-arrow"></i>
+        </a>
+        
+        <a href="#" class="link-card fade-up" target="_blank" rel="noopener">
+            <span class="link-emoji">🎒</span>
+            <div class="link-text">
+                <div class="link-title">My Travel Gear & Packing List</div>
+                <div class="link-desc">Everything I never leave home without</div>
+            </div>
+            <i class="fas fa-arrow-right link-arrow"></i>
+        </a>
+        
+        <a href="#" class="link-card fade-up" target="_blank" rel="noopener">
+            <span class="link-emoji">🌍</span>
+            <div class="link-text">
+                <div class="link-title">Decolonize Palestine</div>
+                <div class="link-desc">A cause that matters — learn, share, act</div>
+            </div>
+            <i class="fas fa-arrow-right link-arrow"></i>
+        </a>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider">
+        <div class="divider-line"></div>
+        <i class="fas fa-star divider-icon"></i>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- ===== MY WORLDS ===== -->
+    <section class="identities">
+        <div class="section-heading fade-up">
+            <h2>The Many Sides of Me</h2>
+            <p>Explore My Worlds</p>
+        </div>
+        
+        <div class="id-card id-card-travel fade-up">
+            <div class="id-header">
+                <span class="id-emoji">✈️</span>
+                <h3 class="id-name">Travel Creator</h3>
+            </div>
+            <p class="id-desc">
+                Chasing hidden gems across the globe. From solo female travel guides to budget-friendly adventures 
+                and authentic cultural connections — I share the world through my lens.
+            </p>
+            <div class="id-buttons">
+                <a href="#" class="id-btn">Latest Guides</a>
+                <a href="#" class="id-btn">Budget Tips</a>
+                <a href="#" class="id-btn">Solo Travel</a>
+            </div>
+        </div>
+        
+        <div class="id-card id-card-wellness fade-up">
+            <div class="id-header">
+                <span class="id-emoji">🌿</span>
+                <h3 class="id-name">Holistic Healing</h3>
+            </div>
+            <p class="id-desc">
+                Licensed Naturopathic Doctor & Acupuncturist. I blend ancient wisdom with modern science 
+                — sharing wellness tips for travelers, natural remedies, and holistic health for life on the road.
+            </p>
+            <div class="id-buttons">
+                <a href="#" class="id-btn">Book a Consult</a>
+                <a href="#" class="id-btn">Wellness Tips</a>
+                <a href="#" class="id-btn">Acupuncture</a>
+            </div>
+        </div>
+        
+        <div class="id-card id-card-tech fade-up">
+            <div class="id-header">
+                <span class="id-emoji">⚡</span>
+                <h3 class="id-name">Tech & Innovation</h3>
+            </div>
+            <p class="id-desc">
+                Obsessed with the intersection of tech and everyday life. From travel apps and gadgets 
+                to productivity hacks — I test it all so you don't have to.
+            </p>
+            <div class="id-buttons">
+                <a href="#" class="id-btn">Gear Reviews</a>
+                <a href="#" class="id-btn">App Hacks</a>
+                <a href="#" class="id-btn">Productivity</a>
+            </div>
+        </div>
+        
+        <div class="id-card id-card-coffee fade-up">
+            <div class="id-header">
+                <span class="id-emoji">☕</span>
+                <h3 class="id-name">Sabr & Sips</h3>
+            </div>
+            <p class="id-desc">
+                My coffee brand born from slow mornings and meaningful moments. Ethically sourced, 
+                carefully crafted — coffee that fuels your adventures. Sabr is patience. Sips is presence.
+            </p>
+            <div class="id-buttons">
+                <a href="#" class="id-btn">Shop Coffee</a>
+                <a href="#" class="id-btn">Our Story</a>
+                <a href="#" class="id-btn">Wholesale</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COLLAB CTA ===== -->
+    <section class="collab">
+        <div class="collab-inner fade-up">
+            <h2 class="collab-title">Let's Create Together</h2>
+            <p class="collab-desc">
+                I partner with brands that align with my values — travel, wellness, tech, and lifestyle. 
+                From sponsored content to ambassadorships.
+            </p>
+            <a href="mailto:hello@freespiritvb.com" class="collab-btn">
+                <i class="fas fa-hand-sparkles"></i>
+                Partner With Me
+            </a>
+            <div class="collab-stats">
+                <div>
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Community</div>
+                </div>
+                <div>
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div>
+                    <div class="stat-number">8.5%</div>
+                    <div class="stat-label">Engagement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p class="footer-name">FreeSpiritVB</p>
+        <p class="footer-line">Travel. Heal. Create. Sip.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
