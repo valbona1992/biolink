@@ -482,4 +482,53 @@
         </div>
         
         <div class="id-card fade-up" style="margin-bottom: 14px;">
-            <div
+            <div class="id-header"><h3 class="id-name">Donate to Lebanon</h3></div>
+            <p class="id-desc">Give with an open heart. If you feel called, we warmly invite you to donate to one of these two organizations supporting the people of Lebanon.</p>
+            <div class="id-buttons">
+                <a href="https://banincharity.org/" class="id-btn" target="_blank" rel="noopener">Banin Charity</a>
+                <a href="https://www.redcross.org.lb/" class="id-btn" target="_blank" rel="noopener">Lebanese Red Cross</a>
+            </div>
+        </div>
+        
+        <div class="id-card fade-up" style="margin-bottom: 14px;">
+            <div class="id-header"><h3 class="id-name">Donate to Gaza</h3></div>
+            <p class="id-desc">Stand in solidarity and support the people of Gaza. These campaigns help provide critical emergency relief, clean water, and family shelter.</p>
+            <div class="id-buttons">
+                <a href="https://piousprojects.org/campaign/2680" class="id-btn" target="_blank" rel="noopener">Pious Projects</a>
+                <a href="https://www.zeffy.com/en-US/fundraising/donate-to-provide-water-in-gaza?fbclid=PAQ0xDSwKg8L5leHRuA2FlbQIxMAABp7ZgP4BNtxDzA2zb5yv-se1f7jKyijIT6Io3fqyvLdNW-Fea-rLvDLJEWLo4_aem_YhR0IoOdSplhRt3V97jn8A" class="id-btn" target="_blank" rel="noopener">Watermelon Sisters</a>
+                <a href="https://www.healpalestine.org/shelter-a-family-in-gaza/" class="id-btn" target="_blank" rel="noopener">HEAL Palestine</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="collab">
+        <div class="collab-inner fade-up">
+            <h2 class="collab-title">Let's Create Together</h2>
+            <p class="collab-desc">
+                I partner with brands that align with my values — travel, wellness, and lifestyle. 
+                From sponsored content to ambassadorships.
+            </p>
+            <a href="mailto:freespiritvb@gmail.com" class="collab-btn">
+                Partner With Me
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p class="footer-name">freespiritvb</p>
+        <p class="footer-line">Travel. Heal. Create. Sip.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
