@@ -29,31 +29,13 @@
         
         body {
             font-family: 'Montserrat', sans-serif;
+            background:
+                radial-gradient(circle at top, rgba(156, 132, 140, 0.14), transparent 32%),
+                linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
             color: var(--ink);
             min-height: 100vh;
             overflow-x: hidden;
             line-height: 1.6;
-        }
-
-        /* ===== BACKGROUND VIDEO ===== */
-        .bg-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        .video-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            background: radial-gradient(circle at top, rgba(156, 132, 140, 0.3), rgba(243, 236, 231, 0.85) 70%);
         }
 
         /* ===== HERO ===== */
@@ -231,15 +213,6 @@
             border-color: var(--line-strong);
         }
 
-        .card-img {
-            width: calc(100% + 60px);
-            margin: -34px -30px 24px -30px;
-            height: 180px;
-            object-fit: cover;
-            display: block;
-            border-bottom: 1px solid var(--line);
-        }
-        
         .id-header {
             margin-bottom: 14px;
         }
@@ -401,11 +374,6 @@
 </head>
 <body>
 
-    <video autoplay loop muted playsinline class="bg-video">
-        <source src="YOUR_VIDEO_URL_HERE.mp4" type="video/mp4">
-    </video>
-    <div class="video-overlay"></div>
-
     <section class="hero">
         <div class="profile-container">
             <div class="profile-ring"></div>
@@ -475,7 +443,6 @@
         </div>
         
         <div class="id-card id-card-travel fade-up">
-            <img src="images/travel.jpg" alt="Travel Creator" class="card-img">
             <div class="id-header"><h3 class="id-name">Travel Creator</h3></div>
             <p class="id-desc">Documenting solo female travel, deep cultural immersion, and off-the-beaten-path destinations across 100+ countries. As a cinematic filmmaker and drone pilot, I capture the world through a highly visual lens to empower your next adventure.</p>
             <div class="id-buttons">
@@ -486,7 +453,6 @@
         </div>
         
         <div class="id-card id-card-wellness fade-up">
-            <img src="images/healing.jpg" alt="Holistic Healing" class="card-img">
             <div class="id-header"><h3 class="id-name">Holistic Healing</h3></div>
             <p class="id-desc">Naturopathic Doctor & Acupuncturist. Bridging modern science and ancient wisdom to treat the root cause of illness, so you can reclaim your health holistically.</p>
             <div class="id-buttons">
@@ -496,7 +462,6 @@
         </div>
         
         <div class="id-card id-card-coffee fade-up">
-            <img src="images/coffee.jpg" alt="Sabr & Sips" class="card-img">
             <div class="id-header"><h3 class="id-name">Sabr & Sips</h3></div>
             <p class="id-desc">A pop-up cafe concept inviting you to pause and connect. Inspired by Balkan coffee culture, serving artisanal coffee, matcha, botanical mocktails, and plant-based pastries.</p>
             <div class="id-buttons">
@@ -517,53 +482,4 @@
         </div>
         
         <div class="id-card fade-up" style="margin-bottom: 14px;">
-            <div class="id-header"><h3 class="id-name">Donate to Lebanon</h3></div>
-            <p class="id-desc">Give with an open heart[cite: 1]. If you feel called, we warmly invite you to donate to one of these two organizations supporting the people of Lebanon[cite: 2].</p>
-            <div class="id-buttons">
-                <a href="https://banincharity.org/" class="id-btn" target="_blank" rel="noopener">Banin Charity [cite: 3, 4]</a>
-                <a href="https://www.redcross.org.lb/" class="id-btn" target="_blank" rel="noopener">Lebanese Red Cross [cite: 6, 7]</a>
-            </div>
-        </div>
-        
-        <div class="id-card fade-up" style="margin-bottom: 14px;">
-            <div class="id-header"><h3 class="id-name">Donate to Gaza</h3></div>
-            <p class="id-desc">Stand in solidarity and support the people of Gaza. These campaigns help provide critical emergency relief, clean water, and family shelter.</p>
-            <div class="id-buttons">
-                <a href="https://piousprojects.org/campaign/2680" class="id-btn" target="_blank" rel="noopener">Pious Projects</a>
-                <a href="https://www.zeffy.com/en-US/fundraising/donate-to-provide-water-in-gaza?fbclid=PAQ0xDSwKg8L5leHRuA2FlbQIxMAABp7ZgP4BNtxDzA2zb5yv-se1f7jKyijIT6Io3fqyvLdNW-Fea-rLvDLJEWLo4_aem_YhR0IoOdSplhRt3V97jn8A" class="id-btn" target="_blank" rel="noopener">Watermelon Sisters</a>
-                <a href="https://www.healpalestine.org/shelter-a-family-in-gaza/" class="id-btn" target="_blank" rel="noopener">HEAL Palestine</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="collab">
-        <div class="collab-inner fade-up">
-            <h2 class="collab-title">Let's Create Together</h2>
-            <p class="collab-desc">
-                I partner with brands that align with my values — travel, wellness, and lifestyle. 
-                From sponsored content to ambassadorships.
-            </p>
-            <a href="mailto:freespiritvb@gmail.com" class="collab-btn">
-                Partner With Me
-            </a>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <p class="footer-name">freespiritvb</p>
-        <p class="footer-line">Travel. Heal. Create. Sip.</p>
-    </footer>
-
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-    </script>
-</body>
-</html>
+            <div
