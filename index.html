@@ -173,7 +173,7 @@
             background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
         }
 
-        /* ===== LINKS SECTION ===== */
+        /* ===== LINKS SECTION (ADVOCACY) ===== */
         .links-section {
             position: relative;
             z-index: 1;
@@ -204,71 +204,7 @@
             text-transform: uppercase;
         }
 
-        .link-card {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            background: var(--panel);
-            backdrop-filter: blur(18px);
-            border-radius: 16px;
-            padding: 24px 26px;
-            margin-bottom: 14px;
-            text-decoration: none;
-            border: 1px solid var(--line);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .link-card::before {
-            content: '';
-            position: absolute;
-            left: 24px;
-            right: 24px;
-            top: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(107, 122, 87, 0.34), transparent);
-            opacity: 1;
-        }
-        
-        .link-card:hover {
-            background: var(--panel-strong);
-            transform: translateY(-2px);
-            box-shadow: 0 18px 40px rgba(62, 54, 46, 0.08);
-            border-color: var(--line-strong);
-        }
-
-        .link-text { flex: 1; }
-        
-        .link-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.92rem;
-            font-weight: 500;
-            color: var(--ink);
-            margin-bottom: 5px;
-            letter-spacing: 0.015em;
-        }
-        
-        .link-desc {
-            font-size: 0.74rem;
-            color: var(--ink-muted);
-            line-height: 1.6;
-        }
-        
-        .link-arrow {
-            color: var(--accent);
-            font-size: 0.78rem;
-            transition: all 0.3s ease;
-            opacity: 0.8;
-        }
-        
-        .link-card:hover .link-arrow {
-            transform: translateX(4px);
-            color: var(--ink-soft);
-            opacity: 1;
-        }
-
-        /* ===== IDENTITY SECTION ===== */
+        /* ===== IDENTITY SECTION & CARDS ===== */
         .identities {
             position: relative;
             z-index: 1;
@@ -294,6 +230,15 @@
             box-shadow: 0 18px 40px rgba(62, 54, 46, 0.08);
             border-color: var(--line-strong);
         }
+
+        .card-img {
+            width: calc(100% + 60px);
+            margin: -34px -30px 24px -30px;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid var(--line);
+        }
         
         .id-header {
             margin-bottom: 14px;
@@ -305,27 +250,6 @@
             font-size: 1.45rem;
             color: var(--ink);
             letter-spacing: 0.02em;
-        }
-
-        .id-social {
-            width: 34px;
-            height: 34px;
-            flex-shrink: 0;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 999px;
-            border: 1px solid var(--line);
-            color: var(--accent);
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .id-social:hover {
-            background: var(--accent);
-            color: var(--white);
-            border-color: var(--line-strong);
         }
         
         .id-desc {
@@ -373,20 +297,20 @@
         .collab-inner {
             max-width: 620px;
             margin: 0 auto;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.54));
-            border: 1px solid var(--line);
+            background: linear-gradient(135deg, var(--ink), #363234);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 18px;
-            padding: 46px 34px;
+            padding: 56px 34px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 26px 56px rgba(74, 69, 72, 0.08);
+            box-shadow: 0 32px 64px rgba(74, 69, 72, 0.25);
         }
         
         .collab-inner::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(156, 132, 140, 0.12), transparent 48%);
+            background: radial-gradient(circle at top right, rgba(156, 132, 140, 0.3), transparent 60%);
         }
         
         .collab-title {
@@ -394,7 +318,7 @@
             font-style: normal;
             font-weight: 500;
             font-size: 2rem;
-            color: var(--ink);
+            color: var(--paper);
             margin-bottom: 12px;
             position: relative;
             letter-spacing: 0.03em;
@@ -402,66 +326,33 @@
         
         .collab-desc {
             font-size: 0.85rem;
-            color: var(--ink-soft);
+            color: rgba(243, 236, 231, 0.8);
             line-height: 1.7;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
             position: relative;
         }
         
         .collab-btn {
             display: inline-flex;
             align-items: center;
-            background: var(--accent);
-            color: #fffaf7;
+            background: var(--paper);
+            color: var(--ink);
             font-size: 0.74rem;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 1.8px;
             text-transform: uppercase;
-            padding: 14px 28px;
+            padding: 16px 32px;
             border-radius: 100px;
             text-decoration: none;
             transition: all 0.3s ease;
             position: relative;
-            box-shadow: 0 10px 24px rgba(156, 132, 140, 0.2);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
         }
         
         .collab-btn:hover {
             transform: translateY(-2px);
-            background: var(--accent-soft);
-            box-shadow: 0 14px 30px rgba(156, 132, 140, 0.24);
-        }
-        
-        .collab-stats {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-top: 28px;
-            position: relative;
-            padding-top: 22px;
-        }
-
-        .collab-stats::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 10%;
-            right: 10%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
-        }
-        
-        .stat-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--accent);
-        }
-        
-        .stat-label {
-            font-size: 0.62rem;
-            color: var(--ink-muted);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+            background: #ffffff;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
         }
 
         /* ===== FOOTER ===== */
@@ -548,14 +439,14 @@
         <div class="divider-line"></div>
     </div>
 
-    <section class="links-section">
+    <section class="identities" style="padding-bottom: 34px;">
         <div class="section-heading fade-up">
             <h2>Curated Essentials</h2>
             <p>Start Your Journey Here</p>
         </div>
         
         <div class="id-card fade-up">
-            <div class="id-header"><h3 class="id-name">Travel </h3></div>
+            <div class="id-header"><h3 class="id-name">Travel & Tech</h3></div>
             <p class="id-desc">The non-negotiables for life on the road. From seamless global connectivity to the travel card that makes it all possible, these are the tools I swear by.</p>
             <div class="id-buttons">
                 <a href="https://www.airalo.com/" class="id-btn" target="_blank" rel="noopener">Airalo eSIM</a>
@@ -583,32 +474,36 @@
             <p>Explore My Worlds</p>
         </div>
         
-       <div class="id-card id-card-travel fade-up">
-    <div class="id-header"><h3 class="id-name">Travel Creator</h3></div>
-<p class="id-desc">Documenting solo female travel, deep cultural immersion, and off-the-beaten-path destinations across 100+ countries. As a cinematic filmmaker and drone pilot, I capture the world through a highly visual lens to empower your next adventure.</p>    <div class="id-buttons">
-        <a href="https://instagram.com/freespiritvb" class="id-btn" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://freespiritvb.my.canva.site/" class="id-btn" target="_blank" rel="noopener">Portfolio</a>
-        <a href="https://freespiritvb.my.canva.site/media-kit" class="id-btn" target="_blank" rel="noopener">UGC Media Kit</a>
-    </div>
-</div>
+        <div class="id-card id-card-travel fade-up">
+            <img src="images/travel.jpg" alt="Travel Creator" class="card-img">
+            <div class="id-header"><h3 class="id-name">Travel Creator</h3></div>
+            <p class="id-desc">Documenting solo female travel, deep cultural immersion, and off-the-beaten-path destinations across 100+ countries. As a cinematic filmmaker and drone pilot, I capture the world through a highly visual lens to empower your next adventure.</p>
+            <div class="id-buttons">
+                <a href="https://instagram.com/freespiritvb" class="id-btn" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://freespiritvb.my.canva.site/" class="id-btn" target="_blank" rel="noopener">Portfolio</a>
+                <a href="https://freespiritvb.my.canva.site/media-kit" class="id-btn" target="_blank" rel="noopener">UGC Media Kit</a>
+            </div>
+        </div>
         
         <div class="id-card id-card-wellness fade-up">
-    <div class="id-header"><h3 class="id-name">Holistic Healing</h3></div>
-<p class="id-desc">Naturopathic Doctor & Acupuncturist. Bridging modern science and ancient wisdom to treat the root cause of illness, so you can reclaim your health holistically.</p>
+            <img src="images/healing.jpg" alt="Holistic Healing" class="card-img">
+            <div class="id-header"><h3 class="id-name">Holistic Healing</h3></div>
+            <p class="id-desc">Naturopathic Doctor & Acupuncturist. Bridging modern science and ancient wisdom to treat the root cause of illness, so you can reclaim your health holistically.</p>
             <div class="id-buttons">
-        <a href="https://book.squareup.com/appointments/jjifwhahd9j834/location/LC4VVG1VCSEYG" class="id-btn" target="_blank" rel="noopener">Book a Consult</a>
-        <a href="https://www.drvalbonabajrami.com/" class="id-btn" target="_blank" rel="noopener">Website</a>
-    </div>
-</div>
+                <a href="https://book.squareup.com/appointments/jjifwhahd9j834/location/LC4VVG1VCSEYG" class="id-btn" target="_blank" rel="noopener">Book a Consult</a>
+                <a href="https://www.drvalbonabajrami.com/" class="id-btn" target="_blank" rel="noopener">Website</a>
+            </div>
+        </div>
         
         <div class="id-card id-card-coffee fade-up">
-    <div class="id-header"><h3 class="id-name">Sabr & Sips</h3></div>
-    <p class="id-desc">A pop-up cafe concept inviting you to pause and connect. Inspired by Balkan coffee culture, serving artisanal coffee, matcha, botanical mocktails, and plant-based pastries. </p>
-    <div class="id-buttons">
-        <a href="https://instagram.com/sabrandsips" class="id-btn" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.sabrandsips.com" class="id-btn" target="_blank" rel="noopener">Website</a>
-    </div>
-</div>
+            <img src="images/coffee.jpg" alt="Sabr & Sips" class="card-img">
+            <div class="id-header"><h3 class="id-name">Sabr & Sips</h3></div>
+            <p class="id-desc">A pop-up cafe concept inviting you to pause and connect. Inspired by Balkan coffee culture, serving artisanal coffee, matcha, botanical mocktails, and plant-based pastries.</p>
+            <div class="id-buttons">
+                <a href="https://instagram.com/sabrandsips" class="id-btn" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://www.sabrandsips.com" class="id-btn" target="_blank" rel="noopener">Website</a>
+            </div>
+        </div>
     </section>
 
     <div class="divider">
@@ -621,24 +516,24 @@
             <p>Donation Pages & Resources</p>
         </div>
         
-       <div class="id-card fade-up" style="margin-bottom: 14px;">
-    <div class="id-header"><h3 class="id-name">Donate to Lebanon</h3></div>
-    <p class="id-desc">Give with an open heart. If you feel called, we warmly invite you to donate to one of these two organizations supporting the people of Lebanon.</p>
-    <div class="id-buttons">
-        <a href="https://banincharity.org/" class="id-btn" target="_blank" rel="noopener">Banin Charity</a>
-        <a href="https://www.redcross.org.lb/" class="id-btn" target="_blank" rel="noopener">Lebanese Red Cross</a>
-    </div>
-</div>
+        <div class="id-card fade-up" style="margin-bottom: 14px;">
+            <div class="id-header"><h3 class="id-name">Donate to Lebanon</h3></div>
+            <p class="id-desc">Give with an open heart[cite: 1]. If you feel called, we warmly invite you to donate to one of these two organizations supporting the people of Lebanon[cite: 2].</p>
+            <div class="id-buttons">
+                <a href="https://banincharity.org/" class="id-btn" target="_blank" rel="noopener">Banin Charity [cite: 3, 4]</a>
+                <a href="https://www.redcross.org.lb/" class="id-btn" target="_blank" rel="noopener">Lebanese Red Cross [cite: 6, 7]</a>
+            </div>
+        </div>
         
         <div class="id-card fade-up" style="margin-bottom: 14px;">
-    <div class="id-header"><h3 class="id-name">Donate to Gaza</h3></div>
-    <p class="id-desc">Stand in solidarity and support the people of Gaza. These campaigns help provide critical emergency relief, clean water, and family shelter.</p>
-    <div class="id-buttons">
-        <a href="https://piousprojects.org/campaign/2680" class="id-btn" target="_blank" rel="noopener">Pious Projects</a>
-        <a href="https://www.zeffy.com/en-US/fundraising/donate-to-provide-water-in-gaza?fbclid=PAQ0xDSwKg8L5leHRuA2FlbQIxMAABp7ZgP4BNtxDzA2zb5yv-se1f7jKyijIT6Io3fqyvLdNW-Fea-rLvDLJEWLo4_aem_YhR0IoOdSplhRt3V97jn8A" class="id-btn" target="_blank" rel="noopener">Watermelon Sisters</a>
-        <a href="https://www.healpalestine.org/shelter-a-family-in-gaza/" class="id-btn" target="_blank" rel="noopener">HEAL Palestine</a>
-    </div>
-</div>
+            <div class="id-header"><h3 class="id-name">Donate to Gaza</h3></div>
+            <p class="id-desc">Stand in solidarity and support the people of Gaza. These campaigns help provide critical emergency relief, clean water, and family shelter.</p>
+            <div class="id-buttons">
+                <a href="https://piousprojects.org/campaign/2680" class="id-btn" target="_blank" rel="noopener">Pious Projects</a>
+                <a href="https://www.zeffy.com/en-US/fundraising/donate-to-provide-water-in-gaza?fbclid=PAQ0xDSwKg8L5leHRuA2FlbQIxMAABp7ZgP4BNtxDzA2zb5yv-se1f7jKyijIT6Io3fqyvLdNW-Fea-rLvDLJEWLo4_aem_YhR0IoOdSplhRt3V97jn8A" class="id-btn" target="_blank" rel="noopener">Watermelon Sisters</a>
+                <a href="https://www.healpalestine.org/shelter-a-family-in-gaza/" class="id-btn" target="_blank" rel="noopener">HEAL Palestine</a>
+            </div>
+        </div>
     </section>
 
     <section class="collab">
@@ -651,7 +546,6 @@
             <a href="mailto:freespiritvb@gmail.com" class="collab-btn">
                 Partner With Me
             </a>
-            
         </div>
     </section>
 
